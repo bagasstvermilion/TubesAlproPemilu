@@ -88,6 +88,7 @@ func menuPeriksaData() int {
 		fmt.Println("3. Cari calon berdasarkan partai")
 		fmt.Println("4. Cari data calon berdasarkan nama")
 		fmt.Println("5. Periksa NIK pemilih terdaftar")
+		fmt.Println("6. Cari NIK")
 		fmt.Println("10. Kembali")
 		fmt.Println("")
 		fmt.Print("Masukkan input: ")
@@ -494,6 +495,22 @@ func tampilkanHasil(A tabCalon, nCalon int) {
     }
 }
 
+func cariNik(A tabPemilih, nPemilih int, x string) int {
+	/*Mengembalikan indeks nik dengan menggunakan algoritma Sequential Search*/
+	var idx, i int
+	fmt.Print("Masukkan NIK yang ingin di-cari: ")
+	fmt.Scan(&x)
+	idx = -1
+	i = 0
+	for i <= nPemilih-1 && idx == -1 {
+		if A[i].id == x {
+			idx = i
+		} else {
+			i = i + 1
+		}
+	}
+	return idx
+}
 
 func pilihCalon(A *tabPemilih, B *tabCalon, nPemilih int, nCalon int) {
 	/*I.S. : Terdefinisi A sebagai array dari pemilih, B sebagai array dari calon, nPemilih sebagai jumlah data dari pemilih dan nCalon sebagai jumlah data dari calon
@@ -577,7 +594,6 @@ func cariCalon(A tabCalon, nCalon int, namaCalon string) {
 		}
 	}
 }
-
 
 func pencarianPemilihBerdasarkanCalon(A tabPemilih, B tabCalon, nCalon int, namaCalon string) {
 	/*I.S. : Terdefinisi A sebagai array pemilih, B sebagai array calon, nCalon sebagai jumlah data dari calon, dan namaCalon sebagai input yang akan akan dicari nama calonnya
@@ -700,6 +716,15 @@ func main() {
 						cariCalon(calonS, nCalon, x)
 					case 5:
 						periksaNikPemilih(pemilihS, nPemilih)
+					case 6:
+						idx := cariNik(pemilihS, nPemilih, x)
+						if idx != -1 {
+							fmt.Println("")
+							fmt.Printf("Nik yang anda cari: %s, status sudah terdaftar.\n", pemilihS[idx].id)
+						} else {
+							fmt.Println("")
+							fmt.Println("NIK telah terdaftar.")
+						}
 					case 10:
 						kembali = true
 					default:
