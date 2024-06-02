@@ -4,10 +4,13 @@ Kelas : SE-47-04
 
 Anggota Kelompok :
 1. Nama : Bagas Pratama
+   
    NIM  : 103022300035
    
 3. Nama : Dian Fardiansyah
+   
    NIM  : 103022300129
+   
 
 Spesifikasi Tubes :
 
